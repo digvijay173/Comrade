@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "151641735750",
+    "firebase_url": "https://comrades-eb1f1.firebaseio.com",
+    "project_id": "comrades-eb1f1",
+    "storage_bucket": "comrades-eb1f1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:151641735750:android:1bfb57e9234ddb1a6d0047",
+        "android_client_info": {
+          "package_name": "com.example.Comrade"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "151641735750-uirlhosle672sbai1d0nbpl7r0c8sn6k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCldmSrVYtHvAj6qZ5Ntbl1G2prvV2IEQ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "151641735750-uirlhosle672sbai1d0nbpl7r0c8sn6k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:151641735750:android:d0e0cdf3a2ab8c446d0047",
+        "android_client_info": {
+          "package_name": "com.example.Comrades"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "151641735750-uirlhosle672sbai1d0nbpl7r0c8sn6k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCldmSrVYtHvAj6qZ5Ntbl1G2prvV2IEQ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "151641735750-uirlhosle672sbai1d0nbpl7r0c8sn6k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
