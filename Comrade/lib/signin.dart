@@ -18,6 +18,7 @@ class _LoginPageState extends State<LoginPage>
     // implement build
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Colors.black,
         title: Text('SignIn'),
       ),
@@ -28,7 +29,10 @@ class _LoginPageState extends State<LoginPage>
             FlatButton(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text('Sign In With Google'),
+                child: Text(
+                  'Sign In With Google',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
               onPressed: _signinwithGoogle,
               color: Colors.black,
