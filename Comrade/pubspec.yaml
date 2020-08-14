@@ -54,6 +54,7 @@ flutter:
     - assets/img4.jpeg
     - assets/img5.jpeg
     - assets/img6.jpg
+    - assets\google_logo.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see
