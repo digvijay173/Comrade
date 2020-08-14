@@ -47,7 +47,7 @@ class _LoginPageState extends State<LoginPage>
                 'Sign in with Google',
                 style: TextStyle(
                   fontSize: 20,
-                  color: Colors.grey,
+                  color: Colors.black,
                 ),
               ),
             )
@@ -66,7 +66,7 @@ class _LoginPageState extends State<LoginPage>
         backgroundColor: Colors.black,
         title: Text('SignIn'),
       ),*/
-      backgroundColor: Colors.lightBlue[300],
+      backgroundColor: Colors.white,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

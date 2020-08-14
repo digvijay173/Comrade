@@ -1,9 +1,8 @@
-import 'package:Comrade/signin.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:Comrade/sidebar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:Comrade/signin.dart' as signin;
-import 'package:google_sign_in/google_sign_in.dart';
+import 'signin.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -13,16 +12,36 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
+    //LoginPage loginPage = LoginPage();
     return Scaffold(
+      drawer: NavDrawer(),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(80.0),
+        child: AppBar(
+          iconTheme: new IconThemeData(
+            color: Colors.white,
+            size: 100.0,
+          ),
+          centerTitle: true,
+          //backgroundColor: Colors.black,
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+          title: Text(
+            'Home',
+            style: TextStyle(color: Colors.white, fontSize: 35),
+          ),
+        ),
+      ),
+      extendBodyBehindAppBar: true,
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
+            begin: Alignment.bottomLeft,
+            end: Alignment.topRight,
             colors: [Colors.blue[100], Colors.blue[400]],
           ),
         ),
-        child: Center(
+        /*child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.max,
@@ -65,7 +84,7 @@ class _HomeState extends State<Home> {
                     fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 40),
-              /*RaisedButton(
+              RaisedButton(
                 onPressed: () {
                   signOutGoogle();
                   Navigator.of(context).pushAndRemoveUntil(
@@ -84,7 +103,50 @@ class _HomeState extends State<Home> {
                 elevation: 5,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(40)),
-              )*/
+              )
+            ],
+          ),
+        ),*/
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(15), topRight: Radius.circular(15)),
+            gradient: LinearGradient(
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+              stops: [0.2, 0.4, 0.6, 0.8],
+              colors: [Colors.white, Colors.amber[400]],
+            ),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Divider(
+                height: 0.5,
+                color: Colors.grey,
+              ),
+              Table(
+                border: TableBorder.symmetric(
+                  inside: BorderSide(
+                      color: Colors.grey, style: BorderStyle.solid, width: 0.5),
+                ),
+                children: [
+                  new TableRow(
+                    decoration: new BoxDecoration(color: Colors.yellow),
+                    children: [
+                      new TableCell(
+                        child: new GestureDetector(
+                          child: new Text('Tap here'),
+                          onTap: () {
+                            //Navigator.push(context, new MaterialPageRoute(builder: buildScreen));
+                          },
+                        ),
+                      )
+                    ],
+                  ),
+                ],
+              ),
             ],
           ),
         ),
@@ -120,10 +182,10 @@ class _HomeState extends State<Home> {
     print(e.toString());
     return null;
   }
-}
+}*/
 
 void signOutGoogle() async {
   await googleSignIn.signOut();
 
   print("User Sign Out");
-}*/
+}
