@@ -1,8 +1,7 @@
 import 'package:Comrade/sidebar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:Comrade/signin.dart' as signin;
-import 'signin.dart';
+//import 'package:Comrade/signin.dart' as signin;
 
 class Home extends StatefulWidget {
   @override
@@ -153,39 +152,4 @@ class _HomeState extends State<Home> {
       ),
     );
   }
-}
-
-/*Future googleSignIn() async {
-  try {
-    GoogleSignInAccount googleUser = await signin.googleSignIn.signIn();
-    GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-
-    final AuthCredential credential = GoogleAuthProvider.getCredential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
-    );
-
-    FirebaseUser user =
-        (await signin.firebaseAuth.signInWithCredential(credential)).user;
-    assert(user.email != null);
-    assert(user.displayName != null);
-    assert(!user.isAnonymous);
-    assert(await user.getIdToken() != null);
-
-    final FirebaseUser currentUser = await signin.firebaseAuth.currentUser();
-    assert(user.uid == currentUser.uid);
-
-    print("signed in " + user.displayName + "\n" + user.photoUrl);
-
-    return user;
-  } catch (e) {
-    print(e.toString());
-    return null;
-  }
-}*/
-
-void signOutGoogle() async {
-  await googleSignIn.signOut();
-
-  print("User Sign Out");
 }
