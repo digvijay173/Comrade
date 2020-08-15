@@ -29,7 +29,7 @@ class NavDrawer extends StatelessWidget {
             ),
           ],*/
           decoration: BoxDecoration(
-              color: Colors.green,
+              color: Colors.white,
               image: DecorationImage(
                   fit: BoxFit.fill, image: AssetImage('assets/sidebar.jpg'))),
         ),
