@@ -2,10 +2,6 @@ import 'package:Comrade/sidebar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:Comrade/signin.dart' as signin;
-import 'package:provider/provider.dart';
-
-import 'darkstyle.dart';
-import 'darktheme.dart';
 
 class Home extends StatefulWidget {
   @override
