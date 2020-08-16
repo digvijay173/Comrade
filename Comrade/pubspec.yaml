@@ -34,6 +34,9 @@ dependencies:
   firebase_core_web: ^0.1.1+2
   shared_preferences: ^0.5.8
   provider: ^4.3.2
+  google_fonts: ^1.1.0
+  font_awesome_flutter: ^8.8.1
+  flutter_swiper: ^1.1.6
 
 dev_dependencies:
   flutter_test:
@@ -87,3 +90,4 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+

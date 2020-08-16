@@ -71,27 +71,6 @@ class _LoginPageState extends State<LoginPage>
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            /*FlatButton(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'Sign In With Google',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-              onPressed: () {
-                signinwithGoogle().whenComplete(() {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return Home();
-                      },
-                    ),
-                  );
-                });
-              },
-              color: Colors.black,
-            )*/
             SizedBox(height: 50),
             signInButton(),
           ],
