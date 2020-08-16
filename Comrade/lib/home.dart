@@ -2,6 +2,10 @@ import 'package:Comrade/sidebar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:Comrade/signin.dart' as signin;
+import 'package:provider/provider.dart';
+
+import 'darkstyle.dart';
+import 'darktheme.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -73,9 +77,7 @@ class _HomeState extends State<Home> {
                   ),
                   Expanded(
                     child: GestureDetector(
-                      onTap: () {
-                        print('testing');
-                      },
+                      onTap: () {},
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -86,7 +88,7 @@ class _HomeState extends State<Home> {
                               'Profiles',
                               style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 40,
+                                fontSize: 30,
                               ),
                             ),
                           ),
@@ -131,7 +133,7 @@ class _HomeState extends State<Home> {
                               'Gallery',
                               style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 40,
+                                fontSize: 30,
                               ),
                             ),
                           ),
@@ -176,7 +178,7 @@ class _HomeState extends State<Home> {
                               'About Us',
                               style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 40,
+                                fontSize: 30,
                               ),
                             ),
                           ),

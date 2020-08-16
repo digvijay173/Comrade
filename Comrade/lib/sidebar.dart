@@ -20,14 +20,6 @@ class NavDrawer extends StatelessWidget {
             ),
             onTap: () => print("This is your current account."),
           ),
-          /*otherAccountsPictures: <Widget>[
-            new GestureDetector(
-              child: new CircleAvatar(
-                backgroundImage: new NetworkImage(otherProfilePic),
-              ),
-              onTap: () => switchAccounts(),
-            ),
-          ],*/
           decoration: BoxDecoration(
               color: Colors.white,
               image: DecorationImage(
@@ -72,9 +64,9 @@ class NavDrawer extends StatelessWidget {
             child: Align(
           alignment: Alignment.bottomCenter,
           child: ListTile(
-            contentPadding: EdgeInsets.fromLTRB(50, 250, 0, 0),
+            contentPadding: EdgeInsets.fromLTRB(30, 260, 0, 0),
             title: Text(
-              "@ Copyright Comrade Team",
+              "@ Copyright Comrade Technical Team",
             ),
           ),
         ))
