@@ -13,20 +13,22 @@ class _ProfileState extends State<Profile> {
       body: Container(
         child: SafeArea(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.baseline,
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'Profiles',
-                  style: TextStyle(
-                      fontFamily: 'Avenir',
-                      fontSize: 35,
-                      color: const Color(0xffffffff),
-                      fontWeight: FontWeight.w900),
-                  textAlign: TextAlign.center,
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Text(
+                    'Profiles',
+                    style: TextStyle(
+                        fontFamily: 'Avenir',
+                        fontSize: 35,
+                        color: const Color(0xffffffff),
+                        fontWeight: FontWeight.w900),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
-              )
+              ),
             ],
           ),
         ),
