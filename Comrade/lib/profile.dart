@@ -33,7 +33,7 @@ class _ProfileState extends State<Profile> {
           elevation: 0.0,
           title: Text(
             'Profiles',
-            style: TextStyle(color: Colors.black, fontSize: 35),
+            style: TextStyle(color: Colors.white, fontSize: 35),
           ),
         ),
       ),
