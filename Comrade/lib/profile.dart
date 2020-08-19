@@ -96,12 +96,22 @@ class _ProfileState extends State<Profile> {
               fontWeight: FontWeight.bold,
             ),
           ),
-          FlatButton(
-              onPressed: null,
-              child: Text(
-                "Open Resume",
-                style: TextStyle(),
-              ))
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: FlatButton(
+                color: Colors.blue,
+                textColor: Colors.white,
+                disabledColor: Colors.grey,
+                disabledTextColor: Colors.black,
+                splashColor: Colors.blue[100],
+                onPressed: () {},
+                child: Text(
+                  "Open Resume",
+                  style: TextStyle(
+                      //color: Colors.white,
+                      ),
+                )),
+          )
         ],
       ),
     );
@@ -135,6 +145,22 @@ class _ProfileState extends State<Profile> {
               fontFamily: 'Times new roman',
               fontWeight: FontWeight.bold,
             ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: FlatButton(
+                color: Colors.blue,
+                textColor: Colors.white,
+                disabledColor: Colors.grey,
+                disabledTextColor: Colors.black,
+                splashColor: Colors.blue[100],
+                onPressed: () {},
+                child: Text(
+                  "Open Resume",
+                  style: TextStyle(
+                      //color: Colors.white,
+                      ),
+                )),
           )
         ],
       ),
@@ -169,6 +195,22 @@ class _ProfileState extends State<Profile> {
               fontFamily: 'Times new roman',
               fontWeight: FontWeight.bold,
             ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: FlatButton(
+                color: Colors.blue,
+                textColor: Colors.white,
+                disabledColor: Colors.grey,
+                disabledTextColor: Colors.black,
+                splashColor: Colors.blue[100],
+                onPressed: () {},
+                child: Text(
+                  "Open Resume",
+                  style: TextStyle(
+                      //color: Colors.white,
+                      ),
+                )),
           )
         ],
       ),
@@ -203,6 +245,22 @@ class _ProfileState extends State<Profile> {
               fontFamily: 'Times new roman',
               fontWeight: FontWeight.bold,
             ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: FlatButton(
+                color: Colors.blue,
+                textColor: Colors.white,
+                disabledColor: Colors.grey,
+                disabledTextColor: Colors.black,
+                splashColor: Colors.blue[100],
+                onPressed: () {},
+                child: Text(
+                  "Open Resume",
+                  style: TextStyle(
+                      //color: Colors.white,
+                      ),
+                )),
           )
         ],
       ),
@@ -237,6 +295,22 @@ class _ProfileState extends State<Profile> {
               fontFamily: 'Times new roman',
               fontWeight: FontWeight.bold,
             ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: FlatButton(
+                color: Colors.blue,
+                textColor: Colors.white,
+                disabledColor: Colors.grey,
+                disabledTextColor: Colors.black,
+                splashColor: Colors.blue[100],
+                onPressed: () {},
+                child: Text(
+                  "Open Resume",
+                  style: TextStyle(
+                      //color: Colors.white,
+                      ),
+                )),
           )
         ],
       ),
@@ -272,6 +346,22 @@ class _ProfileState extends State<Profile> {
               fontWeight: FontWeight.bold,
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: FlatButton(
+                color: Colors.blue,
+                textColor: Colors.white,
+                disabledColor: Colors.grey,
+                disabledTextColor: Colors.black,
+                splashColor: Colors.blue[100],
+                onPressed: () {},
+                child: Text(
+                  "Open Resume",
+                  style: TextStyle(
+                      //color: Colors.white,
+                      ),
+                )),
+          )
         ],
       ),
     );
