@@ -95,7 +95,13 @@ class _ProfileState extends State<Profile> {
               fontFamily: 'Times new roman',
               fontWeight: FontWeight.bold,
             ),
-          )
+          ),
+          FlatButton(
+              onPressed: null,
+              child: Text(
+                "Open Resume",
+                style: TextStyle(),
+              ))
         ],
       ),
     );
