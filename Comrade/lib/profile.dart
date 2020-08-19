@@ -117,7 +117,7 @@ class _ProfileState extends State<Profile> {
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
             child: Image.asset(
-              "assets/digvijay.jpg",
+              "assets/desai.jpg",
               height: 200 * 1.3,
               width: 150 * 1.3,
             ),
@@ -151,7 +151,7 @@ class _ProfileState extends State<Profile> {
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
             child: Image.asset(
-              "assets/digvijay.jpg",
+              "assets/dhanya.jpg",
               height: 200 * 1.3,
               width: 150 * 1.3,
             ),
@@ -185,7 +185,7 @@ class _ProfileState extends State<Profile> {
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
             child: Image.asset(
-              "assets/digvijay.jpg",
+              "assets/rohan.jpg",
               height: 200 * 1.3,
               width: 150 * 1.3,
             ),
@@ -219,7 +219,7 @@ class _ProfileState extends State<Profile> {
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
             child: Image.asset(
-              "assets/digvijay.jpg",
+              "assets/abhay.jpg",
               height: 200 * 1.3,
               width: 150 * 1.3,
             ),
@@ -253,7 +253,7 @@ class _ProfileState extends State<Profile> {
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
             child: Image.asset(
-              "assets/digvijay.jpg",
+              "assets/amrya.jpg",
               height: 200 * 1.3,
               width: 150 * 1.3,
             ),
@@ -265,7 +265,7 @@ class _ProfileState extends State<Profile> {
               fontFamily: 'Times new roman',
               fontWeight: FontWeight.bold,
             ),
-          )
+          ),
         ],
       ),
     );
