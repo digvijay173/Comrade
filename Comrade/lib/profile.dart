@@ -18,6 +18,9 @@ class _ProfileState extends State<Profile> {
       _step5(),
       _step6(),
     ];
+    var size = MediaQuery.of(context).size;
+    final double itemHeight = (size.height - kToolbarHeight - 100) / 2;
+    final double itemWidth = size.width / 2;
     return Scaffold(
       drawer: NavDrawer(),
       appBar: PreferredSize(
@@ -33,35 +36,49 @@ class _ProfileState extends State<Profile> {
           elevation: 0.0,
           title: Text(
             'Profiles',
-            style: TextStyle(color: Colors.white, fontSize: 35),
+            style: TextStyle(color: Colors.black, fontSize: 35),
           ),
         ),
       ),
       backgroundColor: Color.fromARGB(255, 246, 238, 85),
       body: Container(
-        margin: EdgeInsets.all(50),
+        margin: EdgeInsets.fromLTRB(5, 0, 5, 0),
         child: Container(
           alignment: Alignment.center,
           margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
           // width: 294.0 * 1.5,
           // height: 268.0 * 1.5,
           child: SafeArea(
-              child: new Swiper(
-            itemHeight: 268.0 * 1.5,
-            itemWidth: 294.0 * 1.5,
-            //viewportFraction: 0.8,
-            itemBuilder: (BuildContext context, int index) {
+              child: GridView.count(
+            crossAxisCount: 2,
+            childAspectRatio: (itemWidth / itemHeight),
+            controller: new ScrollController(keepScrollOffset: false),
+            shrinkWrap: true,
+            scrollDirection: Axis.vertical,
+            // Create a grid with 2 columns. If you change the scrollDirection to
+            // horizontal, this produces 2 rows.
+            // Generate 100 widgets that display their index in the List.
+            children: List.generate(6, (index) {
               return steps[index];
-            },
-            autoplay: true,
-            scale: 0.9,
-            itemCount: steps.length,
-            layout: SwiperLayout.STACK,
-            pagination: SwiperPagination(
-              alignment: Alignment(0, 1.0),
-            ),
-            control: new SwiperControl(),
-          )),
+            }),
+          )
+              //     child: new Swiper(
+              //   itemHeight: 268.0 * 1.5,
+              //   itemWidth: 294.0 * 1.5,
+              //   //viewportFraction: 0.8,
+              //   itemBuilder: (BuildContext context, int index) {
+              //     return steps[index];
+              //   },
+              //   autoplay: true,
+              //   scale: 0.9,
+              //   itemCount: steps.length,
+              //   layout: SwiperLayout.STACK,
+              //   pagination: SwiperPagination(
+              //     alignment: Alignment(0, 1.0),
+              //   ),
+              //   control: new SwiperControl(),
+              // )
+              ),
         ),
       ),
     );
@@ -69,29 +86,26 @@ class _ProfileState extends State<Profile> {
 
   Widget _step1() {
     return Container(
+      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
-          topRight: Radius.circular(94.0),
-          bottomRight: Radius.circular(94.0),
-          bottomLeft: Radius.circular(94.0),
-        ),
+        borderRadius: BorderRadius.all(Radius.circular(20)),
         color: const Color(0xffffffff),
         border: Border.all(width: 3.0, color: const Color(0xffffffff)),
       ),
       child: Column(
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-            child: Image.asset(
-              "assets/digvijay.jpg",
-              height: 200 * 1.3,
-              width: 150 * 1.3,
-            ),
-          ),
+              padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+              child: CircleAvatar(
+                radius: 80,
+                backgroundImage: AssetImage(
+                  "assets/digvijay.jpg",
+                ),
+              )),
           Text(
             "Digvijay Pawar",
             style: TextStyle(
-              fontSize: 30,
+              fontSize: 20,
               fontFamily: 'Times new roman',
               fontWeight: FontWeight.bold,
             ),
@@ -119,29 +133,26 @@ class _ProfileState extends State<Profile> {
 
   Widget _step2() {
     return Container(
+      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
-          topRight: Radius.circular(94.0),
-          bottomRight: Radius.circular(94.0),
-          bottomLeft: Radius.circular(94.0),
-        ),
+        borderRadius: BorderRadius.all(Radius.circular(20)),
         color: const Color(0xffffffff),
         border: Border.all(width: 3.0, color: const Color(0xffffffff)),
       ),
       child: Column(
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-            child: Image.asset(
-              "assets/desai.jpg",
-              height: 200 * 1.3,
-              width: 150 * 1.3,
-            ),
-          ),
+              padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+              child: CircleAvatar(
+                radius: 80,
+                backgroundImage: AssetImage(
+                  "assets/desai.jpg",
+                ),
+              )),
           Text(
             "Abhishek Desai",
             style: TextStyle(
-              fontSize: 30,
+              fontSize: 20,
               fontFamily: 'Times new roman',
               fontWeight: FontWeight.bold,
             ),
@@ -169,31 +180,31 @@ class _ProfileState extends State<Profile> {
 
   Widget _step3() {
     return Container(
+      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
-          topRight: Radius.circular(94.0),
-          bottomRight: Radius.circular(94.0),
-          bottomLeft: Radius.circular(94.0),
-        ),
+        borderRadius: BorderRadius.all(Radius.circular(20)),
         color: const Color(0xffffffff),
         border: Border.all(width: 3.0, color: const Color(0xffffffff)),
       ),
       child: Column(
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-            child: Image.asset(
-              "assets/dhanya.jpg",
-              height: 200 * 1.3,
-              width: 150 * 1.3,
-            ),
-          ),
-          Text(
-            "Dhananjay Bagul",
-            style: TextStyle(
-              fontSize: 30,
-              fontFamily: 'Times new roman',
-              fontWeight: FontWeight.bold,
+              padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+              child: CircleAvatar(
+                radius: 80,
+                backgroundImage: AssetImage(
+                  "assets/dhanya.jpg",
+                ),
+              )),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(30, 5, 0, 0),
+            child: Text(
+              "Dhananjay Bagul",
+              style: TextStyle(
+                fontSize: 20,
+                fontFamily: 'Times new roman',
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           Padding(
@@ -219,31 +230,31 @@ class _ProfileState extends State<Profile> {
 
   Widget _step4() {
     return Container(
+      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
-          topRight: Radius.circular(94.0),
-          bottomRight: Radius.circular(94.0),
-          bottomLeft: Radius.circular(94.0),
-        ),
+        borderRadius: BorderRadius.all(Radius.circular(20)),
         color: const Color(0xffffffff),
         border: Border.all(width: 3.0, color: const Color(0xffffffff)),
       ),
       child: Column(
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-            child: Image.asset(
-              "assets/rohan.jpg",
-              height: 200 * 1.3,
-              width: 150 * 1.3,
-            ),
-          ),
-          Text(
-            "Rohan Amrutkar",
-            style: TextStyle(
-              fontSize: 30,
-              fontFamily: 'Times new roman',
-              fontWeight: FontWeight.bold,
+              padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+              child: CircleAvatar(
+                radius: 80,
+                backgroundImage: AssetImage(
+                  "assets/rohan.jpg",
+                ),
+              )),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(30, 5, 0, 0),
+            child: Text(
+              "Rohan Amrutkar",
+              style: TextStyle(
+                fontSize: 20,
+                fontFamily: 'Times new roman',
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           Padding(
@@ -269,29 +280,26 @@ class _ProfileState extends State<Profile> {
 
   Widget _step5() {
     return Container(
+      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
-          topRight: Radius.circular(94.0),
-          bottomRight: Radius.circular(94.0),
-          bottomLeft: Radius.circular(94.0),
-        ),
+        borderRadius: BorderRadius.all(Radius.circular(20)),
         color: const Color(0xffffffff),
         border: Border.all(width: 3.0, color: const Color(0xffffffff)),
       ),
       child: Column(
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-            child: Image.asset(
-              "assets/abhay.jpg",
-              height: 200 * 1.3,
-              width: 150 * 1.3,
-            ),
-          ),
+              padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+              child: CircleAvatar(
+                radius: 80,
+                backgroundImage: AssetImage(
+                  "assets/abhay.jpg",
+                ),
+              )),
           Text(
             "Abhay Pathare",
             style: TextStyle(
-              fontSize: 30,
+              fontSize: 20,
               fontFamily: 'Times new roman',
               fontWeight: FontWeight.bold,
             ),
@@ -319,31 +327,31 @@ class _ProfileState extends State<Profile> {
 
   Widget _step6() {
     return Container(
+      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
-          topRight: Radius.circular(94.0),
-          bottomRight: Radius.circular(94.0),
-          bottomLeft: Radius.circular(94.0),
-        ),
+        borderRadius: BorderRadius.all(Radius.circular(20)),
         color: const Color(0xffffffff),
         border: Border.all(width: 3.0, color: const Color(0xffffffff)),
       ),
       child: Column(
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-            child: Image.asset(
-              "assets/amrya.jpg",
-              height: 200 * 1.3,
-              width: 150 * 1.3,
-            ),
-          ),
-          Text(
-            "Abhishek Amritkar",
-            style: TextStyle(
-              fontSize: 27,
-              fontFamily: 'Times new roman',
-              fontWeight: FontWeight.bold,
+              padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+              child: CircleAvatar(
+                radius: 80,
+                backgroundImage: AssetImage(
+                  "assets/amrya.jpg",
+                ),
+              )),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(30, 5, 0, 0),
+            child: Text(
+              "Abhishek Amritkar",
+              style: TextStyle(
+                fontSize: 20,
+                fontFamily: 'Times new roman',
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           Padding(
