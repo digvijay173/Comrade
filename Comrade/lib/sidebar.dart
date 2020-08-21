@@ -1,7 +1,7 @@
 import 'package:Comrade/home.dart';
-import 'package:Comrade/signin.dart';
+// import 'package:Comrade/signin.dart';
 import 'package:flutter/material.dart';
-import 'package:Comrade/signin.dart' as signin;
+// import 'package:Comrade/signin.dart' as signin;
 
 class NavDrawer extends StatelessWidget {
   @override
@@ -11,20 +11,20 @@ class NavDrawer extends StatelessWidget {
       shrinkWrap: true, //just set this property
       padding: EdgeInsets.zero,
       children: <Widget>[
-        new UserAccountsDrawerHeader(
-          accountEmail: Text(signin.email),
-          accountName: new Text(signin.name),
-          currentAccountPicture: new GestureDetector(
-            child: new CircleAvatar(
-              backgroundImage: new NetworkImage(signin.imageUrl),
-            ),
-            onTap: () => print("This is your current account."),
-          ),
-          decoration: BoxDecoration(
-              color: Colors.white,
-              image: DecorationImage(
-                  fit: BoxFit.fill, image: AssetImage('assets/sidebar.jpg'))),
-        ),
+        // new UserAccountsDrawerHeader(
+        //   accountEmail: Text(signin.email),
+        //   accountName: new Text(signin.name),
+        //   currentAccountPicture: new GestureDetector(
+        //     child: new CircleAvatar(
+        //       backgroundImage: new NetworkImage(signin.imageUrl),
+        //     ),
+        //     onTap: () => print("This is your current account."),
+        //   ),
+        //   decoration: BoxDecoration(
+        //       color: Colors.white,
+        //       image: DecorationImage(
+        //           fit: BoxFit.fill, image: AssetImage('assets/sidebar.jpg'))),
+        // ),
         ListTile(
           leading: Icon(Icons.home),
           title: Text('Home'),
@@ -53,11 +53,11 @@ class NavDrawer extends StatelessWidget {
           leading: Icon(Icons.exit_to_app),
           title: Text('Logout'),
           onTap: () {
-            signOutGoogle();
-            Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(builder: (context) {
-              return LoginPage();
-            }), ModalRoute.withName('/'));
+            // signOutGoogle();
+            // Navigator.of(context).pushAndRemoveUntil(
+            //     MaterialPageRoute(builder: (context) {
+            //   return LoginPage();
+            // }), ModalRoute.withName('/'));
           },
         ),
         Expanded(
@@ -75,8 +75,8 @@ class NavDrawer extends StatelessWidget {
   }
 }
 
-void signOutGoogle() async {
-  await googleSignIn.signOut();
+// void signOutGoogle() async {
+//   await googleSignIn.signOut();
 
-  print("User Sign Out");
-}
+//   print("User Sign Out");
+// }

@@ -1,5 +1,6 @@
+import 'package:Comrade/home.dart';
 import 'package:flutter/material.dart';
-import 'package:Comrade/signin.dart';
+//import 'package:Comrade/signin.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Sign In',
-      home: LoginPage(),
+      home: Home(),
     );
   }
 }
