@@ -11,20 +11,20 @@ class NavDrawer extends StatelessWidget {
       shrinkWrap: true, //just set this property
       padding: EdgeInsets.zero,
       children: <Widget>[
-        // new UserAccountsDrawerHeader(
-        //   accountEmail: Text(signin.email),
-        //   accountName: new Text(signin.name),
-        //   currentAccountPicture: new GestureDetector(
-        //     child: new CircleAvatar(
-        //       backgroundImage: new NetworkImage(signin.imageUrl),
-        //     ),
-        //     onTap: () => print("This is your current account."),
-        //   ),
-        //   decoration: BoxDecoration(
-        //       color: Colors.white,
-        //       image: DecorationImage(
-        //           fit: BoxFit.fill, image: AssetImage('assets/sidebar.jpg'))),
-        // ),
+        new UserAccountsDrawerHeader(
+          accountEmail: Text("Digvijay"),
+          accountName: new Text("Email"),
+          //  currentAccountPicture: new GestureDetector(
+          //    child: new CircleAvatar(
+          //      backgroundImage: new NetworkImage(signin.imageUrl),
+          //    ),
+          //    onTap: () => print("This is your current account."),
+          //  ),
+          decoration: BoxDecoration(
+              color: Colors.white,
+              image: DecorationImage(
+                  fit: BoxFit.fill, image: AssetImage('assets/sidebar.jpg'))),
+        ),
         ListTile(
           leading: Icon(Icons.home),
           title: Text('Home'),
