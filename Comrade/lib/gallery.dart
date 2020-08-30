@@ -1,7 +1,5 @@
 // ignore: avoid_web_libraries_in_flutter
-import 'dart:html';
 import 'dart:math';
-
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

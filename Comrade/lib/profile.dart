@@ -1,6 +1,22 @@
+import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:Comrade/sidebar.dart';
 import 'package:flutter/material.dart';
-//import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_full_pdf_viewer/full_pdf_viewer_scaffold.dart';
+import 'package:path_provider/path_provider.dart';
+
+//const String _documentPath = 'assets/Profile.pdf';
+const List<String> _documentPath = [
+  'assets/Profile.pdf',
+  'assets/Profile.pdf',
+  'assets/Profile.pdf',
+  'assets/Profile.pdf',
+  'assets/Profile.pdf',
+  'assets/Profile.pdf',
+];
+const index = 0;
 
 class Profile extends StatefulWidget {
   @override
@@ -8,6 +24,19 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  Future<String> prepareTestPdf(index) async {
+    final ByteData bytes =
+        await DefaultAssetBundle.of(context).load(_documentPath[index]);
+    final Uint8List list = bytes.buffer.asUint8List();
+
+    final tempDir = await getTemporaryDirectory();
+    final tempDocumentPath = '${tempDir.path}/$_documentPath';
+
+    final file = await File(tempDocumentPath).create(recursive: true);
+    file.writeAsBytesSync(list);
+    return tempDocumentPath;
+  }
+
   @override
   Widget build(BuildContext context) {
     final List<Widget> steps = [
@@ -46,8 +75,6 @@ class _ProfileState extends State<Profile> {
         child: Container(
           alignment: Alignment.center,
           margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
-          // width: 294.0 * 1.5,
-          // height: 268.0 * 1.5,
           child: SafeArea(
               child: GridView.count(
             crossAxisCount: 2,
@@ -55,30 +82,10 @@ class _ProfileState extends State<Profile> {
             controller: new ScrollController(keepScrollOffset: false),
             shrinkWrap: true,
             scrollDirection: Axis.vertical,
-            // Create a grid with 2 columns. If you change the scrollDirection to
-            // horizontal, this produces 2 rows.
-            // Generate 100 widgets that display their index in the List.
             children: List.generate(6, (index) {
               return steps[index];
             }),
-          )
-              //     child: new Swiper(
-              //   itemHeight: 268.0 * 1.5,
-              //   itemWidth: 294.0 * 1.5,
-              //   //viewportFraction: 0.8,
-              //   itemBuilder: (BuildContext context, int index) {
-              //     return steps[index];
-              //   },
-              //   autoplay: true,
-              //   scale: 0.9,
-              //   itemCount: steps.length,
-              //   layout: SwiperLayout.STACK,
-              //   pagination: SwiperPagination(
-              //     alignment: Alignment(0, 1.0),
-              //   ),
-              //   control: new SwiperControl(),
-              // )
-              ),
+          )),
         ),
       ),
     );
@@ -118,7 +125,15 @@ class _ProfileState extends State<Profile> {
                 disabledColor: Colors.grey,
                 disabledTextColor: Colors.black,
                 splashColor: Colors.blue[100],
-                onPressed: () {},
+                onPressed: () {
+                  prepareTestPdf(0).then((path) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => FullPdfViewerScreen(path)),
+                    );
+                  });
+                },
                 child: Text(
                   "Open Resume",
                   style: TextStyle(
@@ -146,7 +161,7 @@ class _ProfileState extends State<Profile> {
               child: CircleAvatar(
                 radius: 80,
                 backgroundImage: AssetImage(
-                  "assets/desai.jpg",
+                  "assets/desai.JPG",
                 ),
               )),
           Text(
@@ -165,7 +180,15 @@ class _ProfileState extends State<Profile> {
                 disabledColor: Colors.grey,
                 disabledTextColor: Colors.black,
                 splashColor: Colors.blue[100],
-                onPressed: () {},
+                onPressed: () {
+                  prepareTestPdf(1).then((path) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => FullPdfViewerScreen(path)),
+                    );
+                  });
+                },
                 child: Text(
                   "Open Resume",
                   style: TextStyle(
@@ -193,7 +216,7 @@ class _ProfileState extends State<Profile> {
               child: CircleAvatar(
                 radius: 80,
                 backgroundImage: AssetImage(
-                  "assets/dhanya.jpg",
+                  "assets/dhanya.JPG",
                 ),
               )),
           Padding(
@@ -215,7 +238,15 @@ class _ProfileState extends State<Profile> {
                 disabledColor: Colors.grey,
                 disabledTextColor: Colors.black,
                 splashColor: Colors.blue[100],
-                onPressed: () {},
+                onPressed: () {
+                  prepareTestPdf(2).then((path) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => FullPdfViewerScreen(path)),
+                    );
+                  });
+                },
                 child: Text(
                   "Open Resume",
                   style: TextStyle(
@@ -243,7 +274,7 @@ class _ProfileState extends State<Profile> {
               child: CircleAvatar(
                 radius: 80,
                 backgroundImage: AssetImage(
-                  "assets/rohan.jpg",
+                  "assets/rohan.JPG",
                 ),
               )),
           Padding(
@@ -265,7 +296,15 @@ class _ProfileState extends State<Profile> {
                 disabledColor: Colors.grey,
                 disabledTextColor: Colors.black,
                 splashColor: Colors.blue[100],
-                onPressed: () {},
+                onPressed: () {
+                  prepareTestPdf(3).then((path) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => FullPdfViewerScreen(path)),
+                    );
+                  });
+                },
                 child: Text(
                   "Open Resume",
                   style: TextStyle(
@@ -293,7 +332,7 @@ class _ProfileState extends State<Profile> {
               child: CircleAvatar(
                 radius: 80,
                 backgroundImage: AssetImage(
-                  "assets/abhay.jpg",
+                  "assets/abhay.JPG",
                 ),
               )),
           Text(
@@ -312,7 +351,15 @@ class _ProfileState extends State<Profile> {
                 disabledColor: Colors.grey,
                 disabledTextColor: Colors.black,
                 splashColor: Colors.blue[100],
-                onPressed: () {},
+                onPressed: () {
+                  prepareTestPdf(4).then((path) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => FullPdfViewerScreen(path)),
+                    );
+                  });
+                },
                 child: Text(
                   "Open Resume",
                   style: TextStyle(
@@ -340,7 +387,7 @@ class _ProfileState extends State<Profile> {
               child: CircleAvatar(
                 radius: 80,
                 backgroundImage: AssetImage(
-                  "assets/amrya.jpg",
+                  "assets/amrya.JPG",
                 ),
               )),
           Padding(
@@ -362,7 +409,15 @@ class _ProfileState extends State<Profile> {
                 disabledColor: Colors.grey,
                 disabledTextColor: Colors.black,
                 splashColor: Colors.blue[100],
-                onPressed: () {},
+                onPressed: () {
+                  prepareTestPdf(5).then((path) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => FullPdfViewerScreen(path)),
+                    );
+                  });
+                },
                 child: Text(
                   "Open Resume",
                   style: TextStyle(
@@ -373,5 +428,20 @@ class _ProfileState extends State<Profile> {
         ],
       ),
     );
+  }
+}
+
+class FullPdfViewerScreen extends StatelessWidget {
+  final String pdfPath;
+
+  FullPdfViewerScreen(this.pdfPath);
+
+  @override
+  Widget build(BuildContext context) {
+    return PDFViewerScaffold(
+        appBar: AppBar(
+          title: Text("Document"),
+        ),
+        path: pdfPath);
   }
 }

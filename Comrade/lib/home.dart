@@ -3,6 +3,8 @@ import 'package:Comrade/profile.dart';
 import 'package:Comrade/sidebar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+//import 'gallery.dart';
 //import 'package:Comrade/signin.dart' as signin;
 
 class Home extends StatefulWidget {
