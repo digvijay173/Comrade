@@ -1,4 +1,5 @@
 //import 'package:Comrade/gallery.dart';
+import 'package:Comrade/gallery.dart';
 import 'package:Comrade/profile.dart';
 import 'package:Comrade/sidebar.dart';
 import 'package:flutter/cupertino.dart';
@@ -126,10 +127,10 @@ class _HomeState extends State<Home> {
                   Expanded(
                     child: GestureDetector(
                       onTap: () {
-                        // Navigator.of(context)
-                        //     .push(MaterialPageRoute(builder: (context) {
-                        //   return Gallery();
-                        // }));
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (context) {
+                          return Gallery();
+                        }));
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
