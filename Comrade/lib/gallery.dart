@@ -1,152 +1,184 @@
-// ignore: avoid_web_libraries_in_flutter
-import 'dart:math';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'dart:async';
+import 'dart:io';
 
+import 'package:Comrade/second.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/services.dart';
+
+//void main() => runApp(MyApp());
 
 class Gallery extends StatefulWidget {
+  Gallery({Key key, this.title}) : super(key: key);
+
+  final String title;
   @override
-  _GalleryState createState() => _GalleryState();
+  _Gallery createState() => _Gallery();
 }
 
-class _GalleryState extends State<Gallery> {
+class _Gallery extends State<Gallery> {
+  var storage = FirebaseStorage.instance;
+  List<AssetImage> listOfImage;
+  bool clicked = false;
+  List<String> listOfStr = List();
+  String images;
+  bool isLoading = false;
+  @override
+  void initState() {
+    super.initState();
+    getImages();
+  }
+
+  // void getImages() {
+  //   listOfImage = List();
+  //   for (int i = 0; i < 6; i++) {
+  //     listOfImage.add(AssetImage('assets/image' + i.toString() + '.jpeg'));
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Firebase Storage'),
-      ),
-      body: Center(
+      body: Container(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            new Flexible(
-              child: _buildBody(context),
+            GridView.builder(
+              shrinkWrap: true,
+              padding: const EdgeInsets.all(0),
+              itemCount: listOfImage.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  mainAxisSpacing: 3.0,
+                  crossAxisSpacing: 3.0),
+              itemBuilder: (BuildContext context, int index) {
+                return GridTile(
+                  child: Material(
+                    child: GestureDetector(
+                      child: Stack(children: <Widget>[
+                        this.images == listOfImage[index].assetName ||
+                                listOfStr.contains(listOfImage[index].assetName)
+                            ? Positioned.fill(
+                                child: Opacity(
+                                opacity: 0.7,
+                                child: Image.asset(
+                                  listOfImage[index].assetName,
+                                  fit: BoxFit.fill,
+                                ),
+                              ))
+                            : Positioned.fill(
+                                child: Opacity(
+                                opacity: 1.0,
+                                child: Image.asset(
+                                  listOfImage[index].assetName,
+                                  fit: BoxFit.fill,
+                                ),
+                              )),
+                        this.images == listOfImage[index].assetName ||
+                                listOfStr.contains(listOfImage[index].assetName)
+                            ? Positioned(
+                                left: 0,
+                                bottom: 0,
+                                child: Icon(
+                                  Icons.check_circle,
+                                  color: Colors.green,
+                                ))
+                            : Visibility(
+                                visible: false,
+                                child: Icon(
+                                  Icons.check_circle_outline,
+                                  color: Colors.black,
+                                ),
+                              )
+                      ]),
+                      onTap: () {
+                        setState(() {
+                          if (listOfStr
+                              .contains(listOfImage[index].assetName)) {
+                            this.clicked = false;
+                            listOfStr.remove(listOfImage[index].assetName);
+                            this.images = null;
+                          } else {
+                            this.images = listOfImage[index].assetName;
+                            listOfStr.add(this.images);
+                            this.clicked = true;
+                          }
+                        });
+                      },
+                    ),
+                  ),
+                );
+              },
             ),
+            Builder(builder: (context) {
+              return RaisedButton(
+                  child: Text("Save Images"),
+                  onPressed: () {
+                    setState(() {
+                      this.isLoading = true;
+                    });
+                    listOfStr.forEach((img) async {
+                      String imageName = img
+                          .substring(img.lastIndexOf("/"), img.lastIndexOf("."))
+                          .replaceAll("/", "");
+
+                      final Directory systemTempDir = Directory.systemTemp;
+                      final byteData = await rootBundle.load(img);
+
+                      final file =
+                          File('${systemTempDir.path}/$imageName.jpeg');
+                      await file.writeAsBytes(byteData.buffer.asUint8List(
+                          byteData.offsetInBytes, byteData.lengthInBytes));
+                      StorageTaskSnapshot snapshot = await storage
+                          .ref()
+                          .child("images/$imageName")
+                          .putFile(file)
+                          .onComplete;
+                      if (snapshot.error == null) {
+                        final String downloadUrl =
+                            await snapshot.ref.getDownloadURL();
+                        await FirebaseFirestore.instance
+                            .collection("images")
+                            .add({"url": downloadUrl, "name": imageName});
+                        setState(() {
+                          isLoading = false;
+                        });
+                        final snackBar =
+                            SnackBar(content: Text('Yay! Success'));
+                        Scaffold.of(context).showSnackBar(snackBar);
+                      } else {
+                        print(
+                            'Error from image repo ${snapshot.error.toString()}');
+                        throw ('This file is not an image');
+                      }
+                    });
+                  });
+            }),
+            RaisedButton(
+              child: Text("Get Images"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SecondPage()),
+                );
+              },
+            ),
+            isLoading
+                ? CircularProgressIndicator()
+                : Visibility(visible: false, child: Text("test")),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: getImage,
+        onPressed: getImages,
         child: Icon(Icons.add_a_photo),
       ),
     );
   }
 
-  Widget _buildBody(BuildContext context) {
-    return StreamBuilder<QuerySnapshot>(
-      stream: FirebaseFirestore.instance.collection('storage').snapshots(),
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) return LinearProgressIndicator();
-
-        return _buildList(context, snapshot.data.docs);
-      },
-    );
-  }
-
-  Widget _buildList(BuildContext context, List<DocumentSnapshot> snapshot) {
-    return ListView(
-        padding: const EdgeInsets.only(top: 20.0),
-        children:
-            snapshot.map((data) => _buildListItem(context, data)).toList());
-  }
-
-  Widget _buildListItem(BuildContext context, DocumentSnapshot data) {
-    final record = Record.fromSnapshot(data);
-
-    return Padding(
-      key: ValueKey(record.location),
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey),
-          borderRadius: BorderRadius.circular(5.0),
-        ),
-        child: ListTile(
-          title: Column(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text(
-                  record.location,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                ),
-              ),
-              Image.network(record.url),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Future getImage() async {
-    // Get image from gallery.
-    var image =
-        // ignore: invalid_use_of_visible_for_testing_member
-        await ImagePicker.platform.pickImage(source: ImageSource.gallery);
-    _uploadImageToFirebase(image);
-  }
-
-  Future<void> _uploadImageToFirebase(image) async {
-    try {
-      // Make random image name.
-      int randomNumber = Random().nextInt(100000);
-      String imageLocation = 'images/image$randomNumber.jpg';
-
-      // Upload image to firebase.
-      final StorageReference storageReference =
-          FirebaseStorage().ref().child(imageLocation);
-      final StorageUploadTask uploadTask = storageReference.putFile(image);
-      await uploadTask.onComplete;
-      _addPathToDatabase(imageLocation);
-    } catch (e) {
-      print(e.message);
+  void getImages() {
+    listOfImage = List();
+    for (int i = 0; i < 6; i++) {
+      listOfImage.add(AssetImage('assets/img' + i.toString() + '.jpeg'));
     }
   }
-
-  Future<void> _addPathToDatabase(String text) async {
-    try {
-      // Get image URL from firebase
-      final ref = FirebaseStorage().ref().child(text);
-      var imageString = await ref.getDownloadURL();
-
-      // Add location and url to database
-      await FirebaseFirestore.instance
-          .collection('storage')
-          .doc()
-          .set({'url': imageString, 'location': text});
-    } catch (e) {
-      print(e.message);
-      showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              content: Text(e.message),
-            );
-          });
-    }
-  }
-}
-
-class Record {
-  final String location;
-  final String url;
-  final DocumentReference reference;
-
-  Record.fromMap(Map<String, dynamic> map, {this.reference})
-      : assert(map['location'] != null),
-        assert(map['url'] != null),
-        location = map['location'],
-        url = map['url'];
-
-  Record.fromSnapshot(DocumentSnapshot snapshot)
-      : this.fromMap(snapshot.data(), reference: snapshot.reference);
-
-  @override
-  String toString() => "Record<$location:$url>";
 }
